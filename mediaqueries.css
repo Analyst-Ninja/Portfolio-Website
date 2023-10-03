@@ -1,3 +1,14 @@
+@media screen and (max-width: 1400px){
+    #profile{
+        height: 83vh;
+        margin-bottom: 6rem;
+    }
+    .about-containers{
+        flex-wrap: wrap;
+    }
+}
+
+
 @media screen and (max-width: 1200px){
     #desktop-nav{
         display: none;
@@ -5,4 +16,103 @@
     #hamburger-nav{
         display: flex;
     }  
+    #experience, .experience-details-container{
+        margin-top: 2rem;
+    }
+    #profile, .section-container{
+        display: block;
+    }
+    .arrow-icon{
+        display: none;
+    }
+    section, .section-container{
+        height: fit-content;
+    }
+    section {
+        margin: 0 5%;
+    }
+
+    #profile .section__text{
+        padding-top: 1rem;
+        text-align: center;
+    }
+
+    .section__pic-container img{
+        width: 275px;
+        height: 275px;
+        margin: 0 auto 2rem;
+        align-items: center;
+    }
+    .about-containers{
+        margin-top: 0;
+    }
+    
+}
+
+@media screen and (max-width: 1200px){
+    #contact, footer{
+        height: 40vh;
+    }
+    #profile{
+        height: 83vh;
+        margin-bottom: 0;
+    }
+    artile{
+        font-size: 1rem;
+    }
+    footer nav{
+        height: fit-content;
+        margin-bottom: 2rem;
+    }
+    .about-containers, .contact-info-upper-container, .btn-container{
+        flex-wrap: wrap;
+    }
+    .contact-info-container{
+        margin: 0;
+    }
+    .contact-info-container p, .nav-links li a{
+        font-size: 1rem;
+    }
+    .experience-sub-titile{
+        font-size: 1.25rem;
+    }
+    .logo{
+        font-size: 1.5rem;
+    }
+    .nav-links{
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    .section__pic-container{
+        width: auto;
+        height: 74vw;
+        justify-content: center;
+    }
+    .section__text__p2{
+        font-size: 1.25rem;
+    }
+    .title{
+        font-size: 2rem;
+    }
+    .text-container{
+        text-align: justify;
+    }
+    .about-details-container{
+        padding-top: 3rem;
+        margin-right: auto;
+        padding-left: 0;
+        padding: 1.5rem;
+    }
+    .about-pic{
+        margin-top: 2rem;
+    }
+    #about .title{
+        margin-bottom: 1rem;
+    }
+    .about-details-container p{
+        font-size: small;
+    }
+
+    
 }
