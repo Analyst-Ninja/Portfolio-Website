@@ -176,17 +176,22 @@ section{
     margin: 0 0;
 }
 
-/* .section__text{
+/* .section__pic-container{
+    padding-top: 4rem;
+} */
+
+.section__text{
     align-self: center;
     text-align: center;
     justify-content: center;
     position: relative;
     display: block;
-} */
+}
 
 .section__text {
-    padding-top: 10vh;
+    /* padding-top: 10vh; */
     font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .section__text__p1{
