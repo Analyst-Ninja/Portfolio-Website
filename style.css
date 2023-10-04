@@ -176,12 +176,13 @@ section{
     margin: 0 0;
 }
 
-.seection__text{
+/* .section__text{
     align-self: center;
     text-align: center;
     justify-content: center;
     position: relative;
-}
+    display: block;
+} */
 
 .section__text {
     padding-top: 10vh;
