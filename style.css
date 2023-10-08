@@ -375,7 +375,7 @@ h3.about-tags{
 article{
     display: flex;
     width: 10rem;
-    justify-content: space-around;
+    justify-content: left;
     gap: 0.5rem;
 }
 
@@ -410,6 +410,9 @@ article .icon{
     border-color: rgb(163,163,163) ;
 }
 
+#projects .experience-sub-title{
+    font-size: medium;
+}
 /* CONTACT */
 
 #contact{
