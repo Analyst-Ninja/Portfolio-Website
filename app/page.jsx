@@ -12,6 +12,7 @@ import {
   projects,
   signals,
   stackGroups,
+  totalExperience,
 } from "../src/data/portfolioData";
 
 export default function Page() {
@@ -167,8 +168,8 @@ export default function Page() {
         <section className="section" id="experience">
           <SectionTitle
             eyebrow="Experience"
-            title="Career progression from business analysis into data engineering."
-            body="Shown as a compact LinkedIn-style progression so the transition is visible without overpowering the projects."
+            title="Data engineering experience across banking and ratings."
+            body={`${totalExperience} total experience, shown as a compact progression without overpowering the projects.`}
           />
 
           <div className="timeline timeline--single">
@@ -176,7 +177,9 @@ export default function Page() {
               <article key={`${item.company}-${item.role}`} className="timeline-card">
                 <span className="timeline-card__kicker">{item.kicker}</span>
                 <h3>{item.role}</h3>
-                <p className="timeline-card__company">{item.company}</p>
+                <p className="timeline-card__company">
+                  {item.company} · {item.period}
+                </p>
                 <p>{item.description}</p>
               </article>
             ))}

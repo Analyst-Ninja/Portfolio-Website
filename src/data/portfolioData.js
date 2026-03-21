@@ -10,7 +10,7 @@ export const profile = {
   email: "r.kumar01@hotmail.com",
   github: "https://github.com/Analyst-Ninja",
   linkedin: "https://www.linkedin.com/in/analyst-ninja/",
-  resume: "/assets/Rohit%20Kumar%20Resume%20Updated.pdf",
+  resume: "/assets/Rohit_Kumar_Resume_V8.pdf",
   photo: "/assets/profile-pic.png",
 };
 
@@ -32,7 +32,8 @@ export const experience = [
   {
     kicker: "Current",
     role: "Data Engineer",
-    company: "Moodys Ratings",
+    company: "Moody's Ratings",
+    period: "2025 - Present",
     description:
       "Progressed into building data systems, pipeline reliability, and analytics-facing engineering work with a stronger platform and developer mindset.",
   },
@@ -40,10 +41,13 @@ export const experience = [
     kicker: "Earlier",
     role: "Business Analyst",
     company: "Axis Bank",
+    period: "2022 - 2025",
     description:
       "Started on the analytics side of the stack, working with reporting, data quality, stakeholder requirements, and problem framing that later translated well into data engineering.",
   },
 ];
+
+export const totalExperience = "4+ years";
 
 export const stackGroups = [
   {
