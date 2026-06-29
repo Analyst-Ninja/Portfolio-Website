@@ -10,7 +10,7 @@ export const profile = {
   email: "r.kumar01@hotmail.com",
   github: "https://github.com/Analyst-Ninja",
   linkedin: "https://www.linkedin.com/in/analyst-ninja/",
-  resume: "/assets/RohitKumar_Resume_20260322.pdf",
+  resume: "/assets/Rohit%20Kumar%20-%20Resume%2020260626.pdf",
   photo: "/assets/profile-pic.png",
 };
 
