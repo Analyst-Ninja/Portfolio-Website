@@ -1,15 +1,17 @@
 function ProjectCard({ project }) {
   return (
-    <article className={`project-card project-card--${project.accent}`}>
-      <div className="project-card__top">
-        <span className={`status-pill status-pill--${project.accent}`}>
-          {project.status}
-        </span>
+    <article
+      className={`project-card project-card--${project.accent}`}
+      data-accent={project.accent}
+    >
+      <div className="project-card__head">
+        <span className="status-pill">{project.status}</span>
         <h3>{project.title}</h3>
-        <p>{project.summary}</p>
       </div>
 
-      <ul className="project-highlights">
+      <p className="project-card__summary">{project.summary}</p>
+
+      <ul className="project-card__highlights">
         {project.highlights.map((highlight) => (
           <li key={highlight}>{highlight}</li>
         ))}
@@ -23,13 +25,18 @@ function ProjectCard({ project }) {
         ))}
       </div>
 
-      <div className="project-links">
+      <div className="project-card__links">
         <a href={project.repo} target="_blank" rel="noreferrer">
-          View Repository
+          Repository <span aria-hidden="true">↗</span>
         </a>
         {project.live ? (
-          <a href={project.live} target="_blank" rel="noreferrer">
-            Open Demo
+          <a
+            className="project-card__links-demo"
+            href={project.live}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Live demo <span aria-hidden="true">↗</span>
           </a>
         ) : null}
       </div>
