@@ -9,8 +9,6 @@ import Contact from "../src/components/Contact";
 export default function Page() {
   return (
     <div className="site">
-      <div className="site__glow site__glow--a" aria-hidden="true" />
-      <div className="site__glow site__glow--b" aria-hidden="true" />
       <Nav />
       <main className="site__main">
         <Hero />

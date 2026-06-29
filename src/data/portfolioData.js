@@ -68,11 +68,25 @@ export const stackGroups = [
   },
   {
     title: "Analytics",
-    items: ["Athena", "Power BI", "Timescale-oriented APIs"],
+    items: ["Athena", "MCP", "Power BI", "Timescale-oriented APIs"],
   },
 ];
 
 export const projects = [
+  {
+    title: "Lakehouse MCP Server",
+    status: "Featured",
+    summary:
+      "A serverless MCP server that lets tools and LLMs query the Iceberg lakehouse through Amazon Athena — no always-on infrastructure to manage.",
+    highlights: [
+      "Exposes the lakehouse to any MCP-compatible client",
+      "Runs queries serverless via Athena, pay-per-query",
+      "Turns the Iceberg POC into a usable, queryable interface",
+    ],
+    stack: ["MCP", "Amazon Athena", "Apache Iceberg", "Python", "Serverless"],
+    repo: "https://github.com/Analyst-Ninja",
+    accent: "api",
+  },
   {
     title: "TransitFlow Realtime Event Stream",
     status: "Featured",

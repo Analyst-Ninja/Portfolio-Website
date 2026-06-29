@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 // Owns theme state + persistence. Pre-paint script in layout sets the initial
 // data-theme, so here we only sync state and respond to clicks.
 function ThemeToggle() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const saved = document.documentElement.dataset.theme || "dark";
+    const saved = document.documentElement.dataset.theme || "light";
     setTheme(saved);
   }, []);
 

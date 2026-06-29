@@ -1,17 +1,12 @@
 import "./globals.css";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
-const display = Space_Grotesk({
+// Minimal type system: Inter carries both display and body (weight does the
+// work), JetBrains Mono is reserved for small labels, tags, and metadata.
+const sans = Inter({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -32,16 +27,16 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       suppressHydrationWarning
-      className={`${display.variable} ${body.variable} ${mono.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <head>
         <script
           // Set theme before paint to avoid a flash of the wrong theme on load.
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('theme')||'dark';document.documentElement.dataset.theme=t;}catch(e){}",
+              "try{var t=localStorage.getItem('theme')||'light';document.documentElement.dataset.theme=t;}catch(e){}",
           }}
         />
       </head>
