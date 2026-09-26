@@ -1,4 +1,4 @@
-import { Award, BadgeCheck, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Award, BadgeCheck, GraduationCap } from "lucide-react";
 
 import { awards, certifications, education } from "@/data/portfolioData";
 import SectionTitle from "./SectionTitle";
@@ -46,8 +46,17 @@ export default function Recognition() {
               <ul className="mt-5 space-y-3">
                 {certifications.map((c) => (
                   <li key={c.title} className="text-sm">
-                    <span className="font-medium">{c.title}</span>
-                    <span className="block text-xs text-muted-foreground">{c.org}</span>
+                    {c.url ? (
+                      <a href={c.url} target="_blank" rel="noreferrer" className="group inline-flex items-start gap-1 font-medium hover:text-signal">
+                        {c.title}
+                        <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-signal" />
+                      </a>
+                    ) : (
+                      <span className="font-medium">{c.title}</span>
+                    )}
+                    <span className="block text-xs text-muted-foreground">
+                      {c.date ? `${c.org} · ${c.date}` : c.org}
+                    </span>
                   </li>
                 ))}
               </ul>

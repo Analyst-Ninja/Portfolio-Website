@@ -11,6 +11,7 @@ import { gsap, ScrollTrigger, SplitText, useGSAP, MOTION_OK, MOTION_REDUCED } fr
  *   [data-marquee]     infinite horizontal loop of its first child
  *   [data-type-lines]  children appear one by one like terminal output
  *   [data-count]       number counts up from 0 to its value on enter
+ *                      (data-decimals="n" keeps n decimal places)
  *   [data-bar]         accent bar grows from the left on enter
  * Mount once per page, after the content.
  */
@@ -79,15 +80,18 @@ export default function SiteMotion() {
 
       document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
         const target = Number(el.dataset.count);
+        const decimals = Number(el.dataset.decimals ?? 0);
+        const fmt = (v: number) =>
+          v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
         const counter = { v: 0 };
-        el.textContent = "0";
+        el.textContent = fmt(0);
         gsap.to(counter, {
           v: target,
           duration: 1.6,
           ease: "power3.out",
           scrollTrigger: { trigger: el, start: "top 90%", once: true },
           onUpdate: () => {
-            el.textContent = String(Math.round(counter.v));
+            el.textContent = fmt(counter.v);
           },
         });
       });
@@ -103,7 +107,7 @@ export default function SiteMotion() {
       return () => {
         splits.forEach((s) => s.revert());
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
-          el.textContent = el.dataset.count ?? "";
+          el.textContent = el.dataset.label ?? el.dataset.count ?? "";
         });
       };
     });

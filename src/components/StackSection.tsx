@@ -37,14 +37,18 @@ export default function StackSection() {
       </div>
 
       <div className="container-page">
-        <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {stackGroups.map((g, i) => (
-            <div key={g.title} data-reveal className="bg-background p-6">
-              <p className="font-mono text-xs text-signal">0{i + 1}</p>
-              <h3 className="mt-2 font-display text-lg font-semibold">{g.title}</h3>
-              <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
+            <div key={g.title} data-reveal className="bg-background p-5">
+              <h3 className="flex items-baseline gap-2 font-display text-base font-semibold">
+                <span className="font-mono text-xs font-normal text-signal">0{i + 1}</span>
+                {g.title}
+              </h3>
+              <ul className="mt-3 flex flex-wrap gap-1.5">
                 {g.items.map((it) => (
-                  <li key={it}>{it}</li>
+                  <li key={it} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[11px] text-secondary-foreground">
+                    {it}
+                  </li>
                 ))}
               </ul>
             </div>

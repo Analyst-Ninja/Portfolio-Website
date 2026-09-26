@@ -1,4 +1,5 @@
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -68,10 +69,10 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
           Code <ArrowUpRight className="size-4" />
         </a>
-        {p.diagram ? (
-          <a href={p.diagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
-            Architecture <ExternalLink className="size-3.5" />
-          </a>
+        {p.caseStudy ? (
+          <Link href={p.caseStudy} className="inline-flex items-center gap-1 font-medium text-signal hover:underline underline-offset-4">
+            Case study <ArrowRight className="size-4" />
+          </Link>
         ) : null}
         {p.live ? (
           <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">

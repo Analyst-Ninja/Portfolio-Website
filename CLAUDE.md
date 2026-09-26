@@ -16,7 +16,7 @@ No test or lint setup. Note: `next build` overwrites `.next/` — stop the dev s
 
 Next.js 15 App Router, React 19, **TypeScript** (strict). UI: **Tailwind CSS v4 + shadcn/ui** (new-york, `components.json`). Motion: **GSAP** (+ `@gsap/react`, ScrollTrigger, SplitText, DrawSVG, MotionPath — all free in gsap ≥3.13). Keep TypeScript on 5.x: TS 7 breaks the Next 15 build and drops `baseUrl`.
 
-The site is **data-driven from one file**: `src/data/portfolioData.ts`. Edit it to change any content (profile, hero `metrics`, `pipelineStages`, `experience`, `awards`, `education`, `certifications`, `stackGroups`, `projects`, `consolePreview`, `caseStudies`). Do not hardcode copy in components.
+The site is **data-driven from one file**: `src/data/portfolioData.ts`. Edit it to change any content (profile, hero `metrics`, `pipelineStages`, `experience`, `awards`, `education`, `certifications`, `stackGroups`, `projects`, `consolePreview`, `caseStudies`, `projectCaseStudies`). Do not hardcode copy in components.
 
 - Hero `metrics` are **career-level** numbers taken from the résumé, not project numbers.
 - Lakehouse and MCP server work at Moody's belongs in `experience`, not `projects`.
@@ -25,6 +25,7 @@ Structure:
 - `app/layout.tsx` — fonts via `next/font/google` (Inter `--font-body`, Space Grotesk `--font-display-face`, Instrument Serif `--font-serif-face`, JetBrains Mono `--font-mono-face`), metadata, and a pre-paint inline script. The script sets `.dark` on `<html>` from `localStorage.theme` (dark is the default), and adds `html.js-motion` so reveal targets start hidden. It removes `js-motion` after 3s as a safety net.
 - `app/page.tsx` — home page, composed from section components.
 - `app/projects/aurum/page.tsx` — AURUM case study. It embeds `public/projects/aurum/aurum-architecture.html` in an iframe (PNG fallback on mobile).
+- `app/projects/[slug]/page.tsx` — shared case-study template for the entries in `projectCaseStudies` (pgvector-benchmark, data-feed-engine, transitflow, reddit-etl): impact count-ups, architecture iframe, comparison bars, stage tabs, evidence images, decisions. Each page sets its accent via `--pa-light`/`--pa-dark` on `<main data-accent>` (`var(--pa)` in classes). A project card shows a "Case study" link when `caseStudy` is set.
 - `app/globals.css` — Tailwind import, design tokens on `:root` (light) and `.dark`, `@theme inline` mapping, and the `container-page` / `bg-grid` utilities. Accent colors are `--signal` (lime/olive) and `--gold` (AURUM).
 - `src/components/` — section components are server components. The client components are: `ThemeToggle`, `MobileNav` (shadcn Sheet), `ui/tabs`, `ui/sheet`, and everything in `motion/`.
 - `src/components/ui/` — shadcn primitives (button, badge, card, tabs, sheet, separator). `cn()` lives in `src/lib/utils.ts`.
@@ -35,14 +36,14 @@ Structure:
   - `data-draw-line` — scrubbed timeline line
   - `data-marquee` — infinite marquee
   - `data-type-lines` — terminal lines appearing one by one
-  - `data-count` — count-up
+  - `data-count` — count-up (`data-decimals` for decimals, `data-label` for the final formatted text)
   - `data-bar` — accent bar grow
 
   All motion goes through `gsap.matchMedia()` with a reduced-motion branch.
 - `src/components/motion/PipelineHero.tsx` — animated SVG DAG: horizontal on desktop, vertical zig-zag on mobile.
 - Per-project accent dots are in the `ACCENTS` map in `ProjectCard.tsx`. Add an entry there when adding a new `Accent`.
 
-Static assets (résumé PDF, photo) live in `public/assets/`. Interactive architecture diagrams live in `public/projects/<slug>/` (aurum, pgvector, data-feed-engine); a project links to its diagram via `diagram` (the pgvector one was generated with archify).
+Static assets (résumé PDF, photo) live in `public/assets/`. Case-study assets (archify architecture HTML + PNG fallbacks, charts, screenshots) live in `public/projects/<name>/`. The pgvector diagram was generated with archify here; the others come from each project's repo `docs/`.
 
 ## Notes / gotchas
 

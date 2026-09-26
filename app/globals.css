@@ -142,3 +142,12 @@ html.js-motion [data-split] {
     transition: none !important;
   }
 }
+
+/* Per-project accent on case-study pages: the page root sets --pa-light and
+   --pa-dark inline; components use var(--pa). */
+[data-accent] {
+  --pa: var(--pa-light);
+}
+.dark [data-accent] {
+  --pa: var(--pa-dark);
+}
