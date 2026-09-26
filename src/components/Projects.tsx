@@ -12,10 +12,10 @@ export default function Projects() {
           eyebrow="Selected work"
           title={
             <>
-              Lakehouses, streams <span className="font-serif font-normal italic text-muted-foreground">&amp;</span> AI interfaces.
+              Built on my own time, <span className="font-serif font-normal italic text-muted-foreground">for the craft.</span>
             </>
           }
-          body="From open-table-format lakehouses to an MCP server that lets LLMs query them — plus the streaming and ETL systems where I learned the craft."
+          body="Personal builds where I go deeper than any one job allows — lakehouses, streaming systems, ETL and data APIs."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {rest.map((p, i) => (

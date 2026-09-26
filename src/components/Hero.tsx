@@ -56,14 +56,37 @@ export default function Hero() {
           <PipelineHero stages={pipelineStages} />
         </div>
 
-        <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-border md:grid-cols-4">
-          {metrics.map((m) => (
-            <div key={m.label} data-reveal className="flex flex-col-reverse bg-background p-5 sm:p-6">
-              <dt className="mt-1 text-sm text-muted-foreground">{m.label}</dt>
-              <dd className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{m.value}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="mt-14">
+          <p data-reveal className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="h-px w-8 bg-signal" />
+            By the numbers · Moody&apos;s + Axis Bank
+          </p>
+          <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {metrics.map((m) => (
+              <div
+                key={m.label}
+                data-reveal
+                className="group relative flex flex-col-reverse overflow-hidden rounded-2xl border bg-card/60 p-6 backdrop-blur-sm transition-colors duration-300 hover:border-signal/40 hover:bg-card"
+              >
+                <span aria-hidden data-bar className="absolute inset-x-0 top-0 h-0.5 origin-left bg-signal" />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-signal/0 blur-2xl transition-colors duration-500 group-hover:bg-signal/20"
+                />
+                <dt className="mt-3 space-y-1.5">
+                  <span className="block text-sm font-medium text-foreground/90">{m.label}</span>
+                  <span className="block font-mono text-[11px] text-muted-foreground">{m.context}</span>
+                </dt>
+                <dd className="flex items-baseline gap-1 font-display tracking-tight">
+                  <span data-count={m.value} className="text-5xl font-semibold tabular-nums">
+                    {m.value}
+                  </span>
+                  <span className="text-xl font-medium text-signal">{m.suffix}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </section>
   );

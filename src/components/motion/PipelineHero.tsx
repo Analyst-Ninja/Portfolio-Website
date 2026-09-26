@@ -13,7 +13,7 @@ const NODE_H = 56;
 // Desktop: a gentle left→right wave. Mobile: a top→bottom zig-zag.
 const LAYOUTS = {
   horizontal: {
-    viewBox: "0 0 1200 240",
+    viewBox: "0 40 1200 160",
     points: (n: number): Point[] =>
       Array.from({ length: n }, (_, i) => ({ x: 100 + i * 200, y: [118, 82, 140, 92, 146, 108][i % 6] })),
     edge: (a: Point, b: Point) => {

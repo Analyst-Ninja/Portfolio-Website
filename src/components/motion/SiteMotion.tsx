@@ -10,6 +10,8 @@ import { gsap, ScrollTrigger, SplitText, useGSAP, MOTION_OK, MOTION_REDUCED } fr
  *   [data-draw-line]   vertical line that scales with scroll (scrub)
  *   [data-marquee]     infinite horizontal loop of its first child
  *   [data-type-lines]  children appear one by one like terminal output
+ *   [data-count]       number counts up from 0 to its value on enter
+ *   [data-bar]         accent bar grows from the left on enter
  * Mount once per page, after the content.
  */
 export default function SiteMotion() {
@@ -75,7 +77,35 @@ export default function SiteMotion() {
         });
       });
 
-      return () => splits.forEach((s) => s.revert());
+      document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+        const target = Number(el.dataset.count);
+        const counter = { v: 0 };
+        el.textContent = "0";
+        gsap.to(counter, {
+          v: target,
+          duration: 1.6,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          onUpdate: () => {
+            el.textContent = String(Math.round(counter.v));
+          },
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>("[data-bar]").forEach((bar, i) => {
+        gsap.fromTo(
+          bar,
+          { scaleX: 0 },
+          { scaleX: 1, duration: 1.2, delay: i * 0.1, ease: "expo.out", scrollTrigger: { trigger: bar, start: "top 90%", once: true } }
+        );
+      });
+
+      return () => {
+        splits.forEach((s) => s.revert());
+        document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+          el.textContent = el.dataset.count ?? "";
+        });
+      };
     });
 
     mm.add(MOTION_REDUCED, () => {

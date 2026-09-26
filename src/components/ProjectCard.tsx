@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 const ACCENTS: Record<Accent, string> = {
   gold: "bg-amber-400",
   lake: "bg-sky-400",
-  mcp: "bg-violet-400",
   stream: "bg-cyan-400",
   airflow: "bg-teal-400",
   api: "bg-indigo-400",

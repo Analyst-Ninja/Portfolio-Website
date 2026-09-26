@@ -37,7 +37,7 @@ export default function StackSection() {
       </div>
 
       <div className="container-page">
-        <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {stackGroups.map((g, i) => (
             <div key={g.title} data-reveal className="bg-background p-6">
               <p className="font-mono text-xs text-signal">0{i + 1}</p>

@@ -17,15 +17,15 @@ export default function About() {
           }
         />
 
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] [&>*]:min-w-0">
           <div data-reveal className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border bg-card">
+            <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-full border bg-card ring-1 ring-signal/30 ring-offset-8 ring-offset-background">
               <Image
                 src={profile.photo}
                 alt={`Portrait of ${profile.name}`}
                 fill
                 sizes="(min-width: 1024px) 30vw, 100vw"
-                className="object-cover grayscale-[35%] transition duration-700 hover:grayscale-0"
+                className="object-cover"
               />
             </div>
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border bg-background/85 p-4 backdrop-blur sm:left-auto sm:w-64">
@@ -41,8 +41,10 @@ export default function About() {
             <div data-reveal className="space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p>
                 I started on the analytics side at Axis Bank — requirements, reporting, data quality — and moved into
-                engineering because I wanted to fix problems at the source. Today I build data systems at{" "}
-                <span className="text-foreground">{profile.employer}</span>.
+                engineering because I wanted to fix problems at the source. Today at{" "}
+                <span className="text-foreground">{profile.employer}</span> I build ingestion frameworks, an Iceberg
+                lakehouse with an MCP server on top, and the CLEANews APIs that feed agentic-AI workflows — work
+                recognised with Moody&apos;s IM&apos;PACT Award.
               </p>
               <p>
                 Outside work I build end-to-end platforms to go deeper than any one job allows: AURUM took a stock-research

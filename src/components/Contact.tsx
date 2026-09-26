@@ -15,7 +15,7 @@ export default function Contact() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_bottom,black_20%,transparent_70%)]" />
       <div className="container-page relative">
         <p data-reveal className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          <span className="text-signal">06</span>
+          <span className="text-signal">07</span>
           <span className="h-px w-8 bg-border" />
           Contact
         </p>
