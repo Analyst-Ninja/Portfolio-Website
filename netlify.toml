@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Tailwind v4's native engine (@tailwindcss/oxide) requires Node >= 20.
+  # On older Node, npm silently skips its platform binary and the build fails
+  # with "Cannot find native binding".
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
