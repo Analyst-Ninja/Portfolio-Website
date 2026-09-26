@@ -1,7 +1,7 @@
 // Single source of truth for all site content. Components import from here —
 // do not hardcode copy into components.
 
-export type Accent = "gold" | "lake" | "stream" | "airflow" | "api" | "realtime" | "product";
+export type Accent = "gold" | "vector" | "feeds" | "lake" | "stream" | "airflow" | "api" | "realtime" | "product";
 
 export interface Project {
   slug: string;
@@ -15,6 +15,8 @@ export interface Project {
   live?: string;
   demo?: string;
   caseStudy?: string;
+  // Interactive architecture diagram (HTML in public/projects/<slug>/).
+  diagram?: string;
   accent: Accent;
 }
 
@@ -123,6 +125,7 @@ export const experience: Role[] = [
 ];
 
 export const awards = [
+  { title: "IM'PACT Award — Lead with Curiosity · DB indexing", org: "Moody's", date: "Sep 2026", body: "For improving DB indexing use cases — helping the team index a large volume of unstructured data with pgvector." },
   { title: "IM'PACT Award — Lead with Curiosity", org: "Moody's", date: "Sep 2026", body: "For leading application-level APIs that integrated CLEANews with internal systems, beyond core data-engineering scope." },
   { title: "Platinum Learner Award (2×)", org: "Axis Bank · BIU", date: "Mar 2025", body: "Top learners in the Business Intelligence Unit, FY'24 and FY'25." },
   { title: "Star Award", org: "Axis Bank · BIU", date: "Nov 2023", body: "Repeat-complaint insights that cut bank-wide repeats by 40%." },
@@ -173,6 +176,40 @@ export const projects: Project[] = [
     demo: DRIVE_DEMO,
     caseStudy: "/projects/aurum",
     accent: "gold",
+  },
+  {
+    slug: "pgvector-benchmark",
+    title: "pgvector Index Benchmark",
+    status: "Completed",
+    year: "2026",
+    summary:
+      "A reproducible benchmark of pgvector's IVFFlat and HNSW against pgvectorscale's DiskANN on a real Wikipedia embedding corpus — build cost, disk size, latency, recall and concurrency.",
+    highlights: [
+      "HNSW 91× faster than exact search at 0.972 recall@10 (328K vectors)",
+      "DiskANN index 3.7× smaller than HNSW's",
+      "Held-out query vectors; memory-squeeze sweeps on build cost",
+    ],
+    stack: ["PostgreSQL", "pgvector", "pgvectorscale", "Python", "sentence-transformers", "Docker"],
+    repo: "https://github.com/Analyst-Ninja/pgvector-index-benchmark",
+    diagram: "/projects/pgvector/pgvector-architecture.html",
+    accent: "vector",
+  },
+  {
+    slug: "data-feed-engine",
+    title: "Data Feed Engine",
+    status: "Completed",
+    year: "2025",
+    summary:
+      "A config-driven ingestion framework: a new feed is one JSON config plus one class, and the engine runs extract, processing, quality checks, load and run metrics the same way every time.",
+    highlights: [
+      "Factory + registry — feeds and datasources plug in by decorator",
+      "Incremental watermark loads tracked in an S3 feed log",
+      "Ships as an AWS Lambda container image, SonarQube-gated",
+    ],
+    stack: ["Python", "pandas", "SQLAlchemy", "MySQL", "S3", "AWS Lambda", "Docker"],
+    repo: "https://github.com/Analyst-Ninja/data-feed-engine",
+    diagram: "/projects/data-feed-engine/framework.html",
+    accent: "feeds",
   },
   {
     slug: "lakehouse",

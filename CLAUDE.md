@@ -42,7 +42,7 @@ Structure:
 - `src/components/motion/PipelineHero.tsx` — animated SVG DAG: horizontal on desktop, vertical zig-zag on mobile.
 - Per-project accent dots are in the `ACCENTS` map in `ProjectCard.tsx`. Add an entry there when adding a new `Accent`.
 
-Static assets (résumé PDF, photo) live in `public/assets/`. AURUM assets live in `public/projects/aurum/`.
+Static assets (résumé PDF, photo) live in `public/assets/`. Interactive architecture diagrams live in `public/projects/<slug>/` (aurum, pgvector, data-feed-engine); a project links to its diagram via `diagram` (the pgvector one was generated with archify).
 
 ## Notes / gotchas
 

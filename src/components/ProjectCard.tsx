@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 // Per-project accent dot/glow. Add an entry here when adding a new `accent`.
 const ACCENTS: Record<Accent, string> = {
   gold: "bg-amber-400",
+  vector: "bg-violet-400",
+  feeds: "bg-lime-400",
   lake: "bg-sky-400",
   stream: "bg-cyan-400",
   airflow: "bg-teal-400",
@@ -66,6 +68,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
           Code <ArrowUpRight className="size-4" />
         </a>
+        {p.diagram ? (
+          <a href={p.diagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
+            Architecture <ExternalLink className="size-3.5" />
+          </a>
+        ) : null}
         {p.live ? (
           <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
             Live app <ExternalLink className="size-3.5" />
