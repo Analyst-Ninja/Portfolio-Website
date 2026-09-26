@@ -156,7 +156,7 @@ export const stackGroups = [
   { title: "AI & ML", items: ["MCP", "LangChain", "LangGraph", "SageMaker", "LightGBM", "SHAP"] },
 ];
 
-const DRIVE_DEMO = "https://drive.google.com/drive/u/0/folders/1aS_D9_asOrPL4PoNjjG3ZCPCfoXRbUyZ";
+const DRIVE_DEMO = "https://drive.google.com/file/d/1aEpKgX1khqUPq_JM3LWMTab1W3VlxxYV/view";
 
 export const projects: Project[] = [
   {
