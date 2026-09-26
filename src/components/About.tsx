@@ -18,8 +18,10 @@ export default function About() {
         />
 
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] [&>*]:min-w-0">
-          <div data-reveal className="relative">
-            <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-full border bg-card ring-1 ring-signal/30 ring-offset-8 ring-offset-background">
+          {/* Self-start + sticky so the portrait + card stay together instead of
+              stretching to the (taller) text column. */}
+          <div data-reveal className="flex flex-col items-center self-start lg:sticky lg:top-24">
+            <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-full border bg-card ring-1 ring-signal/30 ring-offset-8 ring-offset-background">
               <Image
                 src={profile.photo}
                 alt={`Portrait of ${profile.name}`}
@@ -28,12 +30,19 @@ export default function About() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border bg-background/85 p-4 backdrop-blur sm:left-auto sm:w-64">
-              <p className="font-mono text-xs text-muted-foreground">currently</p>
-              <p className="mt-1 text-sm font-medium">
-                {profile.title} @ {profile.employer}
-              </p>
-              <p className="text-xs text-muted-foreground">{totalExperience} in data · {profile.location}</p>
+            <div className="relative z-10 -mt-10 flex items-center gap-3 rounded-2xl border bg-background/90 px-5 py-3.5 shadow-xl shadow-black/20 backdrop-blur">
+              <span className="relative flex size-2 shrink-0">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-signal" />
+              </span>
+              <div className="text-left">
+                <p className="text-sm font-medium whitespace-nowrap">
+                  {profile.title} @ {profile.employer}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {totalExperience} in data · {profile.location}
+                </p>
+              </div>
             </div>
           </div>
 
