@@ -6,47 +6,49 @@
 
 /* ---------- Tokens ---------- */
 :root {
-  --radius: 1rem;
+  --radius: 1.25rem;
 
   /* Light */
-  --background: #f6f5f1;
-  --foreground: #121314;
+  --background: #f7f8fb;
+  --foreground: #0b1020;
   --card: #ffffff;
-  --card-foreground: #121314;
-  --muted: #ecebe6;
-  --muted-foreground: #5d6168;
-  --secondary: #ecebe6;
-  --secondary-foreground: #121314;
-  --accent: #e6e5df;
-  --accent-foreground: #121314;
-  --border: rgb(18 19 20 / 0.1);
-  --ring: #4d7c0f;
-  /* Signal: electric lime in dark, deep olive in light for contrast */
-  --primary: #3f6d0a;
-  --primary-foreground: #f8fbe9;
-  --signal: #4d7c0f;
+  --card-foreground: #0b1020;
+  --muted: #eef1f6;
+  --muted-foreground: #5a6375;
+  --secondary: #eef1f6;
+  --secondary-foreground: #0b1020;
+  --accent: #e8ecf4;
+  --accent-foreground: #0b1020;
+  --border: rgb(11 16 32 / 0.08);
+  --ring: #2f5bea;
+  /* Signal: electric blue accent (name kept so every page recolours) */
+  --primary: #2f5bea;
+  --primary-foreground: #ffffff;
+  --signal: #2f5bea;
   --gold: #a16207;
-  --grid: rgb(18 19 20 / 0.05);
+  --grid: rgb(11 16 32 / 0.04);
+  --gradient: linear-gradient(100deg, #2f5bea, #4f46e5 50%, #7c3aed);
 }
 
 .dark {
-  --background: #0a0b0d;
-  --foreground: #ecebe6;
-  --card: #111316;
-  --card-foreground: #ecebe6;
-  --muted: #16181c;
-  --muted-foreground: #8b9099;
-  --secondary: #1a1d21;
-  --secondary-foreground: #ecebe6;
-  --accent: #1a1d21;
-  --accent-foreground: #ecebe6;
-  --border: rgb(236 235 230 / 0.09);
-  --ring: #c6f432;
-  --primary: #c6f432;
-  --primary-foreground: #0a0b0d;
-  --signal: #c6f432;
+  --background: #07090f;
+  --foreground: #f2f4f8;
+  --card: #0d111a;
+  --card-foreground: #f2f4f8;
+  --muted: #121826;
+  --muted-foreground: #8a93a6;
+  --secondary: #121826;
+  --secondary-foreground: #f2f4f8;
+  --accent: #151c2c;
+  --accent-foreground: #f2f4f8;
+  --border: rgb(242 244 248 / 0.07);
+  --ring: #4f7cff;
+  --primary: #4f7cff;
+  --primary-foreground: #ffffff;
+  --signal: #4f7cff;
   --gold: #f5c451;
-  --grid: rgb(236 235 230 / 0.035);
+  --grid: rgb(242 244 248 / 0.03);
+  --gradient: linear-gradient(100deg, #8fb0ff, #4f7cff 45%, #a78bfa);
 }
 
 @theme inline {
@@ -73,8 +75,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), var(--font-body), sans-serif;
-  --font-serif: var(--font-serif-face), Georgia, serif;
+  --font-display: var(--font-body), sans-serif;
+  --font-serif: var(--font-body), sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
 }
 
@@ -93,7 +95,7 @@
   }
   ::selection {
     background: var(--signal);
-    color: #0a0b0d;
+    color: #ffffff;
   }
   :focus-visible {
     outline: 2px solid var(--ring);
@@ -118,6 +120,29 @@
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 56px 56px;
+}
+
+/* Horizontal swipe rows on mobile */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Accent gradient text (replaces the old serif-italic accent words) */
+@utility text-gradient {
+  background-image: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft accent glow for primary buttons and highlighted surfaces */
+@utility glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--signal) 35%, transparent),
+    0 10px 36px -10px color-mix(in srgb, var(--signal) 70%, transparent);
 }
 
 @utility text-balance {
@@ -150,4 +175,19 @@ html.js-motion [data-split] {
 }
 .dark [data-accent] {
   --pa: var(--pa-dark);
+}
+
+/* Slow rotating ring behind the hero portrait */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SplitText wraps words in divs; give each word the gradient so it survives the split. */
+.text-gradient * {
+  background-image: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

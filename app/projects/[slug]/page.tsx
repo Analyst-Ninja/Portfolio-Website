@@ -128,7 +128,7 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
             <h1 data-split className="mt-6 max-w-5xl font-display text-[clamp(2.75rem,8vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-balance">
               {cs.title}
             </h1>
-            <p data-reveal className="mt-8 max-w-3xl font-serif text-3xl italic leading-snug text-(--pa) sm:text-4xl">
+            <p data-reveal className="mt-8 max-w-3xl text-3xl font-medium leading-snug tracking-tight text-(--pa) sm:text-4xl">
               {cs.oneLiner}
             </p>
             <p data-reveal className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">

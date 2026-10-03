@@ -7,7 +7,7 @@ import type { Accent, Project } from "@/data/portfolioData";
 import { cn } from "@/lib/utils";
 
 // Per-project accent dot/glow. Add an entry here when adding a new `accent`.
-const ACCENTS: Record<Accent, string> = {
+export const ACCENTS: Record<Accent, string> = {
   gold: "bg-amber-400",
   vector: "bg-violet-400",
   feeds: "bg-lime-400",
@@ -19,12 +19,25 @@ const ACCENTS: Record<Accent, string> = {
   product: "bg-emerald-400",
 };
 
-export default function ProjectCard({ project, index }: { project: Project; index: number }) {
+const MAX_CHIPS = 4;
+
+export default function ProjectCard({
+  project,
+  index,
+  className,
+}: {
+  project: Project;
+  index: number;
+  className?: string;
+}) {
   const p = project;
   return (
     <Card
       data-reveal
-      className="group relative gap-5 overflow-hidden py-6 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-foreground/25"
+      className={cn(
+        "group relative gap-4 overflow-hidden py-5 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-foreground/25",
+        className
+      )}
     >
       <div
         aria-hidden
@@ -43,29 +56,30 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             {p.status}
           </Badge>
         </div>
-        <CardTitle className="mt-3 font-display text-2xl tracking-tight">{p.title}</CardTitle>
+        <CardTitle className="mt-2 font-display text-xl tracking-tight">{p.title}</CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-1 flex-col gap-4">
-        <p className="text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
-        <ul className="space-y-2">
-          {p.highlights.map((h) => (
-            <li key={h} className="flex gap-2.5 text-sm leading-relaxed">
-              <span className="mt-[0.6em] h-px w-3 shrink-0 bg-foreground/40" />
-              {h}
-            </li>
-          ))}
-        </ul>
+      <CardContent className="flex flex-1 flex-col gap-3">
+        <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground" title={p.summary}>
+          {p.summary}
+        </p>
+        <p className="flex gap-2 font-mono text-xs leading-relaxed text-signal">
+          <span aria-hidden>→</span>
+          {p.highlights[0]}
+        </p>
         <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
-          {p.stack.map((s) => (
-            <span key={s} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[11px] text-secondary-foreground">
+          {p.stack.slice(0, MAX_CHIPS).map((s) => (
+            <span key={s} className="rounded-full border px-2.5 py-0.5 font-mono text-[11px] text-muted-foreground">
               {s}
             </span>
           ))}
+          {p.stack.length > MAX_CHIPS ? (
+            <span className="px-1 py-0.5 font-mono text-[11px] text-muted-foreground">+{p.stack.length - MAX_CHIPS}</span>
+          ) : null}
         </div>
       </CardContent>
 
-      <CardFooter className="gap-5 border-t pt-5 text-sm">
+      <CardFooter className="gap-5 border-t pt-4 text-sm">
         <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium hover:text-signal">
           Code <ArrowUpRight className="size-4" />
         </a>
