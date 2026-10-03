@@ -16,12 +16,12 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <FeaturedProject />
-        <Projects />
-        <StackSection />
         <About />
         <Timeline />
         <Recognition />
+        <FeaturedProject />
+        <Projects />
+        <StackSection />
         <Contact />
       </main>
       <Footer />

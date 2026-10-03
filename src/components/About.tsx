@@ -8,7 +8,7 @@ export default function About() {
     <section id="about" className="scroll-mt-20 py-24 sm:py-32">
       <div className="container-page">
         <SectionTitle
-          index="04"
+          index="01"
           eyebrow="About"
           title={
             <>

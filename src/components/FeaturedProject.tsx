@@ -15,7 +15,7 @@ export default function FeaturedProject() {
     <section id="work" className="scroll-mt-20 py-24 sm:py-32">
       <div className="container-page">
         <SectionTitle
-          index="01"
+          index="04"
           eyebrow="Flagship"
           title={
             <>

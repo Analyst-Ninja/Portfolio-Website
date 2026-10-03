@@ -7,7 +7,7 @@ export default function Timeline() {
     <section id="experience" className="scroll-mt-20 border-t py-24 sm:py-32">
       <div className="container-page">
         <SectionTitle
-          index="05"
+          index="02"
           eyebrow={`Experience · ${totalExperience}`}
           title="Where I've worked."
           body="From analytics at a bank to data platforms at a ratings agency — the common thread is making data trustworthy enough to act on."
