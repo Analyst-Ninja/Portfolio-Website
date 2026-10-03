@@ -1,22 +1,9 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display-face",
-  display: "swap",
-});
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-serif-face",
-  display: "swap",
-});
-const mono = JetBrains_Mono({
+const body = Geist({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const mono = Geist_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono-face",
@@ -35,8 +22,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0b0d" },
-    { media: "(prefers-color-scheme: light)", color: "#f6f5f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#07090f" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f8fb" },
   ],
 };
 
@@ -50,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`dark ${body.variable} ${display.variable} ${serif.variable} ${mono.variable}`}
+      className={`dark ${body.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

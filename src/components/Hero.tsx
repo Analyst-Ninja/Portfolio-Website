@@ -1,91 +1,169 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { metrics, pipelineStages, profile } from "@/data/portfolioData";
+import { interests, metrics, pipelineStages, profile, totalExperience } from "@/data/portfolioData";
+import { cn } from "@/lib/utils";
 import PipelineHero from "./motion/PipelineHero";
+
+function StatusDot() {
+  return (
+    <span className="relative flex size-2 shrink-0">
+      <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-60" />
+      <span className="relative inline-flex size-2 rounded-full bg-signal" />
+    </span>
+  );
+}
+
+// profile-pic.png is already circle-cropped (transparent corners), so it is
+// always shown inside a circle — never a rectangle.
+function Portrait() {
+  return (
+    <div className="relative mx-auto size-72 lg:size-80">
+      <div aria-hidden className="absolute -inset-10 rounded-full bg-signal/20 blur-3xl" />
+      <div
+        aria-hidden
+        className="absolute -inset-1.5 animate-[spin-slow_14s_linear_infinite] rounded-full"
+        style={{ background: "conic-gradient(from 0deg, transparent 0 25%, var(--signal) 45%, #a78bfa 60%, transparent 80%)" }}
+      />
+      <div className="absolute inset-0 overflow-hidden rounded-full bg-background p-1.5">
+        <div className="relative size-full overflow-hidden rounded-full bg-card">
+          <Image
+            src={profile.photo}
+            alt={`Portrait of ${profile.name}`}
+            fill
+            priority
+            sizes="320px"
+            className="scale-[1.03] object-cover"
+          />
+        </div>
+      </div>
+      <div className="absolute -left-6 top-10 rounded-2xl border bg-background/80 px-3.5 py-2 shadow-xl shadow-black/30 backdrop-blur">
+        <p className="text-lg font-semibold leading-none tracking-tight">{totalExperience}</p>
+        <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">in data</p>
+      </div>
+      <div className="absolute -right-4 bottom-8 flex items-center gap-2 rounded-2xl border bg-background/80 px-3.5 py-2.5 shadow-xl shadow-black/30 backdrop-blur">
+        <StatusDot />
+        <p className="text-sm font-medium">{profile.employer}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[760px] -translate-x-1/2 rounded-full bg-signal/10 blur-[120px]"
+        className="pointer-events-none absolute -top-48 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-signal/15 blur-[140px]"
       />
 
-      <div className="container-page relative pt-16 pb-10 sm:pt-24">
-        <div data-reveal className="mb-8 inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1.5 font-mono text-xs text-muted-foreground backdrop-blur">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-60" />
-            <span className="relative inline-flex size-2 rounded-full bg-signal" />
-          </span>
-          {profile.title} · {profile.employer} · {profile.location}
-        </div>
+      <div className="container-page relative pt-8 pb-14 sm:pt-16 md:pb-20">
+        <div className="grid items-center gap-12 md:grid-cols-[1.35fr_1fr]">
+          <div>
+            {/* Mobile: small avatar instead of the big portrait */}
+            <div data-reveal className="mb-6 flex items-center gap-3 md:hidden">
+              <div className="relative size-14 shrink-0 overflow-hidden rounded-full bg-card ring-2 ring-signal/60 ring-offset-2 ring-offset-background">
+                <Image src={profile.photo} alt={`Portrait of ${profile.name}`} fill sizes="56px" className="scale-[1.03] object-cover" />
+              </div>
+              <div>
+                <p className="font-semibold">{profile.name}</p>
+                <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <StatusDot /> {profile.title} · {profile.employer}
+                </p>
+              </div>
+            </div>
 
-        <h1
-          data-split
-          className="max-w-5xl font-display text-[clamp(2.75rem,8vw,6.75rem)] font-semibold leading-[0.95] tracking-[-0.035em]"
-        >
-          I build data platforms that <span className="font-serif font-normal italic text-signal">run themselves.</span>
-        </h1>
+            <p
+              data-reveal
+              className="mb-6 hidden w-fit items-center gap-2 rounded-full border bg-card/60 px-3 py-1.5 font-mono text-[11px] text-muted-foreground backdrop-blur md:inline-flex"
+            >
+              <StatusDot />
+              {profile.title} · {profile.employer} · {profile.location}
+            </p>
 
-        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-[1.3fr_1fr] md:items-end">
-          <p data-reveal className="max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {profile.tagline} {profile.summary}
-          </p>
-          <div data-reveal className="flex flex-wrap gap-3 md:justify-end">
-            <Button asChild size="lg">
-              <Link href="/projects/aurum">
-                Explore AURUM <ArrowRight />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href={profile.github} target="_blank" rel="noreferrer">
-                GitHub <ArrowUpRight />
-              </a>
-            </Button>
+            <h1
+              data-split
+              className="text-[clamp(2.6rem,6.2vw,5.25rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-balance"
+            >
+              I build data platforms that <span className="text-gradient">run themselves.</span>
+            </h1>
+            <p data-reveal className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {profile.summary}
+            </p>
+            <div data-reveal className="mt-8 flex flex-wrap gap-2.5">
+              <Button asChild size="lg" className="glow">
+                <Link href="/projects/aurum">
+                  Explore AURUM <ArrowRight />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href={profile.github} target="_blank" rel="noreferrer">
+                  GitHub <ArrowUpRight />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="ghost">
+                <a href={profile.resume} target="_blank" rel="noreferrer">
+                  Résumé <ArrowUpRight />
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          <div data-reveal className="hidden md:block">
+            <Portrait />
           </div>
         </div>
 
-        <div data-reveal className="mt-14 rounded-3xl border bg-card/40 p-4 backdrop-blur-sm sm:p-6">
+        {/* Career metrics */}
+        <dl className="relative mt-14 grid grid-cols-2 border-y md:mt-20 lg:grid-cols-4">
+          <span aria-hidden data-bar className="absolute inset-x-0 -top-px h-px origin-left bg-gradient-to-r from-signal via-signal/60 to-transparent" />
+          {metrics.map((m, i) => (
+            <div
+              key={m.label}
+              data-reveal
+              className={cn(
+                "flex flex-col-reverse px-1 py-6 sm:px-6",
+                i % 2 === 1 && "border-l pl-5",
+                i === 2 && "lg:border-l lg:pl-6",
+                i >= 2 && "border-t lg:border-t-0"
+              )}
+            >
+              <dt className="mt-2 font-mono text-[11px] uppercase leading-snug tracking-wider text-muted-foreground">{m.label}</dt>
+              <dd className="flex flex-wrap items-baseline gap-x-1 tracking-tight">
+                <span data-count={m.value} className="text-4xl font-semibold tabular-nums sm:text-5xl">
+                  {m.value}
+                </span>
+                <span className="text-sm font-medium text-signal sm:text-lg">{m.suffix}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* About */}
+        <div id="about" data-reveal className="grid scroll-mt-24 gap-4 py-10 md:grid-cols-[12rem_1fr] md:gap-10 md:py-14">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal">About</p>
+          <div>
+            <p className="max-w-3xl text-lg leading-relaxed text-foreground/85 sm:text-xl">{profile.bio}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {interests.map((it) => (
+                <li key={it.title} title={it.body} className="rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
+                  {it.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Pipeline DAG: desktop only (tall zig-zag on mobile) */}
+        <div data-reveal className="hidden rounded-[1.25rem] border bg-card/50 p-6 md:block">
           <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <span>pipeline.live</span>
-            <span className="hidden sm:inline">source → serve</span>
+            <span>source → serve</span>
           </div>
           <PipelineHero stages={pipelineStages} />
-        </div>
-
-        <div className="mt-14">
-          <p data-reveal className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="h-px w-8 bg-signal" />
-            By the numbers · Moody&apos;s + Axis Bank
-          </p>
-          <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {metrics.map((m) => (
-              <div
-                key={m.label}
-                data-reveal
-                className="group relative flex flex-col-reverse overflow-hidden rounded-2xl border bg-card/60 p-6 backdrop-blur-sm transition-colors duration-300 hover:border-signal/40 hover:bg-card"
-              >
-                <span aria-hidden data-bar className="absolute inset-x-0 top-0 h-0.5 origin-left bg-signal" />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-signal/0 blur-2xl transition-colors duration-500 group-hover:bg-signal/20"
-                />
-                <dt className="mt-3 space-y-1.5">
-                  <span className="block text-sm font-medium text-foreground/90">{m.label}</span>
-                  <span className="block font-mono text-[11px] text-muted-foreground">{m.context}</span>
-                </dt>
-                <dd className="flex items-baseline gap-1 font-display tracking-tight">
-                  <span data-count={m.value} className="text-5xl font-semibold tabular-nums">
-                    {m.value}
-                  </span>
-                  <span className="text-xl font-medium text-signal">{m.suffix}</span>
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>

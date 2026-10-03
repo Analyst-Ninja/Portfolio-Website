@@ -27,6 +27,9 @@ export const profile = {
   tagline: "Data Engineer at Moody's.",
   summary:
     "I design ingestion frameworks, lakehouses and data APIs that stay correct when nobody is watching — and, more and more, the MCP servers and services that hand that data to AI.",
+  // Short About copy for the hero bento tile.
+  bio:
+    "Started in analytics at Axis Bank, moved into engineering to fix data problems at the source. Today I build ingestion frameworks, an Iceberg lakehouse with an MCP server, and the APIs that feed agentic-AI workflows at Moody's.",
   email: "r.kumar01@hotmail.com",
   github: "https://github.com/Analyst-Ninja",
   linkedin: "https://www.linkedin.com/in/analyst-ninja/",
@@ -301,15 +304,6 @@ export const projects: Project[] = [
     live: "https://whatsapp-chat-analytics.streamlit.app/",
     accent: "product",
   },
-];
-
-export const consolePreview = [
-  "$ aws stepfunctions start-execution --name aurum-daily",
-  "[ok] ingest: 503 symbols · dbt build: 237 tests passed",
-  "$ aurum train --walk-forward --purge 5d",
-  "[ok] model registered · shap features pruned",
-  "$ mcp call lakehouse.query --table feeds.daily",
-  "[ok] iceberg → 12 rows · lineage attached",
 ];
 
 export const caseStudies = {

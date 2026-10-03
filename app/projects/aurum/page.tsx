@@ -39,7 +39,7 @@ export default function AurumCaseStudy() {
             <h1 data-split className="mt-6 font-display text-[clamp(3.5rem,13vw,10rem)] font-semibold leading-[0.85] tracking-[-0.045em]">
               {cs.title}
             </h1>
-            <p data-reveal className="mt-8 max-w-3xl font-serif text-3xl italic leading-snug text-gold sm:text-4xl">
+            <p data-reveal className="mt-8 max-w-3xl text-3xl font-medium leading-snug tracking-tight text-gold sm:text-4xl">
               {cs.oneLiner}
             </p>
             <p data-reveal className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">

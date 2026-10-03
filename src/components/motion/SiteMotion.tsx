@@ -63,7 +63,7 @@ export default function SiteMotion() {
         gsap.fromTo(
           track,
           { xPercent: reverse ? -50 : 0 },
-          { xPercent: reverse ? 0 : -50, duration: 40, ease: "none", repeat: -1 }
+          { xPercent: reverse ? 0 : -50, duration: 80, ease: "none", repeat: -1 }
         );
       });
 
