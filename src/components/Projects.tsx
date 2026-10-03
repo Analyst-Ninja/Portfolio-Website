@@ -8,7 +8,7 @@ export default function Projects() {
     <section className="pb-24 sm:pb-32">
       <div className="container-page">
         <SectionTitle
-          index="02"
+          index="05"
           eyebrow="Selected work"
           title={
             <>

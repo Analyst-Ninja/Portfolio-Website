@@ -8,10 +8,10 @@ import MobileNav from "./MobileNav";
 
 // Root-relative anchors so the nav also works from /projects/* pages.
 const links = [
-  { href: "/#work", label: "Work" },
-  { href: "/#stack", label: "Stack" },
   { href: "/#about", label: "About" },
   { href: "/#experience", label: "Experience" },
+  { href: "/#work", label: "Work" },
+  { href: "/#stack", label: "Stack" },
   { href: "/#contact", label: "Contact" },
 ];
 

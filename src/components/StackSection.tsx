@@ -10,7 +10,7 @@ export default function StackSection() {
     <section id="stack" className="scroll-mt-20 border-y bg-card/30 py-24 sm:py-32">
       <div className="container-page">
         <SectionTitle
-          index="03"
+          index="06"
           eyebrow="Toolbox"
           title="Tools I reach for, layer by layer."
           body="Grouped the way data actually moves: in, through, stored, shipped — and increasingly, handed to a model."

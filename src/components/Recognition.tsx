@@ -7,7 +7,7 @@ export default function Recognition() {
   return (
     <section className="border-t bg-card/30 py-24 sm:py-32">
       <div className="container-page">
-        <SectionTitle index="06" eyebrow="Recognition & learning" title="Awards, education, certifications." />
+        <SectionTitle index="03" eyebrow="Recognition & learning" title="Awards, education, certifications." />
 
         <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
           <div data-reveal className="rounded-3xl border bg-background p-6 sm:p-8">
